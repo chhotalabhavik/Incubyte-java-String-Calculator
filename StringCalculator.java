@@ -48,4 +48,15 @@ public class StringCalculator {
 		}
 	}
 
+    private static String parseDelimiter(String header) {
+		String delimiter = header.substring(2);
+		if (delimiter.startsWith("[")) {
+			delimiter = delimiter.substring(1, delimiter.length() - 1);
+		}
+		return Stream.of(delimiter.split("]\\["))
+				.map(Pattern::quote)
+				.collect(Collectors.joining("|"));
+	}
+
+
 }
