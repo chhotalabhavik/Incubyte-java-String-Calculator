@@ -15,5 +15,14 @@ public class StringCalculator {
 		
 		return getNumbers().sum();
 	}
+	private IntStream getNumbers() {
+		if (numbers.isEmpty()) {
+			return IntStream.empty();
+		} else {
+			return Stream.of(numbers.split(delimiter))
+					.mapToInt(Integer::parseInt)
+					.map(n -> n % 1000);
+		}
+	}
 
 }
